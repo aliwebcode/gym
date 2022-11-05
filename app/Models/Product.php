@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function status()
+    {
+        return $this->status ? 'Active' : 'Inactive';
+    }
+
+    public function statusWithLabel()
+    {
+        switch ($this->status) {
+            case 0: $result = '<label class="badge bg-danger rounded-pill font-13">Inactive</label>'; break;
+            case 1: $result = '<label class="badge bg-success rounded-pill font-13">Active</label>'; break;
+        }
+        return $result;
+    }
 }

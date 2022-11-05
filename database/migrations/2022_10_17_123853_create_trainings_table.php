@@ -19,6 +19,7 @@ class CreateTrainingsTable extends Migration
             $table->string('name_ar')->nullable();
             $table->text('description_en');
             $table->text('description_ar')->nullable();
+            $table->string('image');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
