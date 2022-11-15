@@ -3,7 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="d7a8ace3-160a-4160-9c47-45276cd1bc99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CartItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CartItem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CustomerClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CustomerClass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/CustomerSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CustomerSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/GymClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/GymClass.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/PurchaseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/PurchaseType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/SubscriptionCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/SubscriptionCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Training.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Training.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_10_17_123511_create_cart_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_10_17_123511_create_cart_items_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_10_17_130317_create_customer_classes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_10_17_130317_create_customer_classes_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_10_17_130557_create_customer_subscriptions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_10_17_130557_create_customer_subscriptions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/AdminSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/AdminSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/RoleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RoleSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +184,14 @@
       <workItem from="1666963518747" duration="29000" />
       <workItem from="1667556923508" duration="21085000" />
       <workItem from="1667648516796" duration="4851000" />
-      <workItem from="1667672389002" duration="6720000" />
+      <workItem from="1667672389002" duration="7752000" />
+      <workItem from="1667784358399" duration="634000" />
+      <workItem from="1667924037892" duration="3541000" />
+      <workItem from="1667978952234" duration="12258000" />
+      <workItem from="1668174611405" duration="6564000" />
+      <workItem from="1668234068990" duration="47000" />
+      <workItem from="1668531672436" duration="4658000" />
+      <workItem from="1668543024074" duration="3875000" />
     </task>
     <servers />
   </component>
@@ -174,32 +199,21 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1667673855539">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1668546634511">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1667673855539" />
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1666963555565">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1668546634511" />
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1668539700636">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1666963555565" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1668539700636" />
     <state x="517" y="287" key="NewPhpFileDialog" timestamp="1667673961974">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1667673961974" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1666717707029">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1667926879669">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1666717707029" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/app/Http/Controllers/Admin/TrainingController.php</url>
-          <line>25</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1667926879669" />
   </component>
 </project>

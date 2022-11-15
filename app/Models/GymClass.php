@@ -27,4 +27,14 @@ class GymClass extends Model
         return $result;
     }
 
+    public function scopeActive($query)
+    {
+        $query->where('status', 1);
+    }
+
+    public function training()
+    {
+        return $this->belongsTo(Training::class)->active();
+    }
+
 }

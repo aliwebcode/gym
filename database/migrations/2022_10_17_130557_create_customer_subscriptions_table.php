@@ -19,7 +19,6 @@ class CreateCustomerSubscriptionsTable extends Migration
             $table->foreignId('subscrib_id')->constrained('subscriptions')->cascadeOnDelete();
             $table->date('start_date')->default('1900-01-01');
             $table->date('end_date')->default('1900-01-01');
-            $table->float('payment', 3, 2)->default(0.00);
             $table->tinyInteger('status_id')->default(1);
             $table->timestamps();
         });

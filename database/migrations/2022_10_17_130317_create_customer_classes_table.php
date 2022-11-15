@@ -19,7 +19,6 @@ class CreateCustomerClassesTable extends Migration
             $table->foreignId('class_id')->constrained('gym_classes')->cascadeOnDelete();
             $table->foreignId('cart_item_id')->constrained('cart_items')->cascadeOnDelete();
             $table->dateTime('class_date')->default(' 1900-01-01 00:00:00');
-            $table->float('payment', 3, 2)->default(0.00);
             $table->tinyInteger('has_subscription')->default(0);
             $table->timestamps();
         });

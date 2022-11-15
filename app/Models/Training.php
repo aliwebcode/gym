@@ -24,4 +24,14 @@ class Training extends Model
         }
         return $result;
     }
+
+    public function scopeActive($query)
+    {
+        $query->where('status', 1);
+    }
+
+    public function gym_classes()
+    {
+        return $this->hasMany(GymClass::class);
+    }
 }

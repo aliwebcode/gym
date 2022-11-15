@@ -24,4 +24,8 @@ class Product extends Model
         }
         return $result;
     }
+    public function scopeActive($query)
+    {
+        $query->where('status', 1);
+    }
 }

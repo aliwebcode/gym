@@ -16,10 +16,10 @@ class CreateCartItemsTable extends Migration
         Schema::create('cart_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('cart_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('target_id');
-            $table->string('target_type');
             $table->dateTime('purchase_date')->default('1900-01-01 00:00:00');
             $table->foreignId('purchase_type_id')->default(0);
+            $table->foreignId('purchase_id')->default(0);
+            $table->float('payment', 3, 2)->default(0.00);
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\RegisterRequest;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,7 +26,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
             'birthday' => $request->birthday ?? null,
             'image' => $request->image ?? null,
-            'role_id' => 1
+            'role_id' => Role::where('name', 'User')->first()->id
         ]);
 
         return response([
