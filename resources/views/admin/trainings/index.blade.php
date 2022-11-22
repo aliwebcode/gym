@@ -42,13 +42,17 @@
                                             <a href="{{ route('admin.trainings.edit', $training->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a href="javascript:void(0);" onclick="if (confirm('Are you sure to delete this record?')) { document.getElementById('delete-form-{{ $training->id }}').submit(); } else { return false; }" class="btn btn-danger btn-sm">
+                                            <a href="javascript:void(0);"
+                                               onclick="deleteItem({{ $training->gym_classes->count() }})"
+                                               data-bs-toggle="modal"
+                                               data-bs-target="#deleteModal"
+                                               class="btn btn-danger btn-sm delete-btn">
                                                 <i class="fa fa-trash-alt"></i>
                                             </a>
                                         </div>
                                         <form action="{{ route('admin.trainings.destroy', $training->id) }}"
                                               method="post"
-                                              id="delete-form-{{ $training->id }}"
+                                              id="delete-form"
                                               class="d-none">
                                             @csrf
                                             @method('DELETE')
@@ -67,6 +71,30 @@
             </div>
         </div>
     </div>
+
+
+    <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="standard-modalLabel">Delete Training</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure to delete training?</h4>
+                    <p id="modal-warning-message"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="delete-btn" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
 @endsection
 
 @push('script')
@@ -88,4 +116,19 @@
 
     <!-- Datatables init -->
     <script src="{{ asset('assets/admin/js/pages/datatables.init.js') }}"></script>
+@endpush
+
+@push('script')
+    <script>
+        let deleteItem = function (c) {
+            if(c > 0) {
+                $('#modal-warning-message').text('The training has ' + c + ' classes will be delete');
+                $('#modal-warning-message').attr('class', 'alert alert-danger');
+            } else {
+                $('#modal-warning-message').text('');
+                $('#modal-warning-message').attr('class', '');
+            }
+            $('#delete-btn').attr('onclick', 'document.getElementById("delete-form").submit()');
+        }
+    </script>
 @endpush

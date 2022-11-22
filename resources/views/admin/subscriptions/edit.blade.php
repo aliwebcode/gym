@@ -16,6 +16,14 @@
                             @csrf
                             @method('PATCH')
                             <div class="row">
+                                <div class="form-group">
+                                    <label for="subscription_category_id">Subscription Category</label>
+                                    <select class="form-control" name="subscription_category_id" id="subscription_category_id">
+                                        @foreach($subscription_categories as $category)
+                                            <option value="{{ $category->id }}" {{ $subscription->subscription_category_id == $category->id ?? 'selected' }}>{{ $category->name_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="name_en">Name (EN)</label>
@@ -44,24 +52,16 @@
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="duration">Duration (minute)</label>
+                                        <label for="duration">Duration (Days)</label>
                                         <input type="number" min="1" class="form-control" name="duration" id="duration" value="{{ $subscription->duration }}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="price">Price ($)</label>
+                                        <label for="price">Price</label>
                                         <input type="number" min="1" class="form-control" name="price" id="price" value="{{ $subscription->price }}">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subscription_category_id">Subscription Category</label>
-                                <select class="form-control" name="subscription_category_id" id="subscription_category_id">
-                                    @foreach($subscription_categories as $category)
-                                        <option value="{{ $category->id }}" {{ $subscription->subscription_category_id == $category->id ?? 'selected' }}>{{ $category->name_en }}</option>
-                                    @endforeach
-                                </select>
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-success" value="Update">

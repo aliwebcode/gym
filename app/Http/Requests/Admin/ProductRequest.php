@@ -33,6 +33,8 @@ class ProductRequest extends FormRequest
                     'description_ar' => 'required',
                     'status' => 'required',
                     'image' => 'required|mimes:jpg,jpeg,png,gif|max:3000',
+                    'cost' => 'required|numeric',
+                    'price' => 'required|numeric',
                 ];
             }
             case 'PUT':
@@ -44,7 +46,9 @@ class ProductRequest extends FormRequest
                     'description_en' => 'required',
                     'description_ar' => 'required',
                     'status' => 'required',
-                    'image' => 'nullable|mimes:jpg,jpeg,png,gif|max:3000'
+                    'image' => 'nullable|mimes:jpg,jpeg,png,gif|max:3000',
+                    'cost' => 'required|numeric',
+                    'price' => 'required|numeric'
                 ];
             }
             default: break;

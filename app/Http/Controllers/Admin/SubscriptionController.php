@@ -27,7 +27,7 @@ class SubscriptionController extends Controller
     public function store(SubscriptionRequest $request)
     {
         if ($image = $request->file('image')) {
-            $file_name = $request->name_en . time() . "." . $image->getClientOriginalExtension();
+            $file_name = rand(1, 99) . time() . "." . $image->getClientOriginalExtension();
             $path = public_path('uploads/subscriptions');
             $image->move($path, $file_name);
             $request->image = 'uploads/subscriptions/' . $file_name;
@@ -68,7 +68,7 @@ class SubscriptionController extends Controller
             // Delete old image
             if(File::exists($subscription->image))
                 unlink($subscription->image);
-            $file_name = $request->name_en . time() . "." . $image->getClientOriginalExtension();
+            $file_name = rand(1, 99) . time() . "." . $image->getClientOriginalExtension();
             $path = public_path('uploads/subscriptions');
             $image->move($path, $file_name);
             $request->image = 'uploads/subscriptions/' . $file_name;

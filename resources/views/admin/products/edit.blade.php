@@ -37,6 +37,20 @@
                                 <label for="description_ar">Description (AR)</label>
                                 <textarea class="form-control summernote" name="description_ar" id="description_ar" cols="30" rows="10">{{ $product->description_ar }}</textarea>
                             </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="cost">Cost</label>
+                                        <input type="number" min="1" id="cost" name="cost" class="form-control" value="{{ $product->cost }}">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="price">Price</label>
+                                        <input type="number" min="1" id="price" name="price" class="form-control" value="{{ $product->price }}">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="image" class="d-block">Image</label>
                                 <input type="file" name="image" id="image">

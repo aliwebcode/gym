@@ -24,7 +24,7 @@ class TrainingController extends Controller
     public function store(TrainingRequest $request)
     {
         if ($image = $request->file('image')) {
-            $file_name = $request->name_en . time() . "." . $image->getClientOriginalExtension();
+            $file_name = rand(1, 99) . time() . "." . $image->getClientOriginalExtension();
             $path = public_path('uploads/trainings');
             $image->move($path, $file_name);
             $request->image = 'uploads/trainings/' . $file_name;
@@ -63,7 +63,7 @@ class TrainingController extends Controller
             // Delete old image
             if(File::exists($training->image))
                 unlink($training->image);
-            $file_name = $request->name_en . time() . "." . $image->getClientOriginalExtension();
+            $file_name = rand(1, 99) . time() . "." . $image->getClientOriginalExtension();
             $path = public_path('uploads/trainings');
             $image->move($path, $file_name);
             $request->image = 'uploads/trainings/' . $file_name;

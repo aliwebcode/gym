@@ -29,8 +29,8 @@ class TrainingRequest extends FormRequest
                 return [
                     'name_en' => 'required|max:255',
                     'name_ar' => 'required|max:255',
-                    'description_en' => 'required',
-                    'description_ar' => 'required',
+                    'description_en' => 'nullable',
+                    'description_ar' => 'nullable',
                     'status' => 'required',
                     'image' => 'required|mimes:jpg,jpeg,png,gif|max:3000',
                 ];
@@ -41,8 +41,8 @@ class TrainingRequest extends FormRequest
                 return [
                     'name_en' => 'required|max:255',
                     'name_ar' => 'required|max:255',
-                    'description_en' => 'required',
-                    'description_ar' => 'required',
+                    'description_en' => 'nullable',
+                    'description_ar' => 'nullable',
                     'status' => 'required',
                     'image' => 'nullable|mimes:jpg,jpeg,png,gif|max:3000'
                 ];

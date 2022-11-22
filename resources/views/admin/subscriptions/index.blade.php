@@ -22,6 +22,8 @@
                                 <th>Image</th>
                                 <th>Name (AR)</th>
                                 <th>Name (EN)</th>
+                                <th>Duration</th>
+                                <th>Price</th>
                                 <th>Creation Date</th>
                                 <th>Options</th>
                             </tr>
@@ -34,6 +36,8 @@
                                     </td>
                                     <td>{{ $subscription->name_ar }}</td>
                                     <td>{{ $subscription->name_en }}</td>
+                                    <td>{{ $subscription->duration }}</td>
+                                    <td>{{ $subscription->price }}</td>
                                     <td>{{ $subscription->created_at->format("Y-m-d") }}</td>
                                     <td>
                                         <div class="btn-group">

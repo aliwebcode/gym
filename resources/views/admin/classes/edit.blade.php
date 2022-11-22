@@ -16,6 +16,14 @@
                             @csrf
                             @method('PATCH')
                             <div class="row">
+                                <div class="form-group">
+                                    <label for="training">Training</label>
+                                    <select name="training_id" id="training" class="form-control">
+                                        @foreach($trainings as $training)
+                                            <option value="{{ $training->id }}" {{ $cls->training_id == $training->id ?? 'selected' }}>{{ $training->name_en }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="name_en">Name (EN)</label>
@@ -46,13 +54,13 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
-                                        <label for="price">Price ($)</label>
+                                        <label for="price">Price</label>
                                         <input type="number" min="1" name="price" id="price" class="form-control" value="{{ $cls->price }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="duration">Duration</label>
+                                <label for="duration">Duration (minute)</label>
                                 <input type="number" min="1" name="duration" id="duration" class="form-control" value="{{ $cls->duration }}">
                             </div>
                             <div class="row">
@@ -68,18 +76,16 @@
                                         <input type="date" name="end_date" id="end_date" class="form-control" value="{{ $cls->end_date }}">
                                     </div>
                                 </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="start_time">Start Time</label>
+                                        <input type="time" name="start_time" id="start_time" class="form-control" value="{{ $cls->start_time }}">
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="image" class="d-block">Image</label>
                                 <input type="file" name="image" id="image">
-                            </div>
-                            <div class="form-group">
-                                <label for="training">Training</label>
-                                <select name="training_id" id="training" class="form-control">
-                                    @foreach($trainings as $training)
-                                        <option value="{{ $training->id }}" {{ $cls->training_id == $training->id ?? 'selected' }}>{{ $training->name_en }}</option>
-                                    @endforeach
-                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="is_active">Status</label>

@@ -37,7 +37,9 @@ class ProductController extends Controller
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
                 'status' => $request->status,
-                'image' => $request->image
+                'image' => $request->image,
+                'cost' => $request->cost,
+                'price' => $request->price,
             ]);
         }
         return redirect()->route('admin.products.index')->with([

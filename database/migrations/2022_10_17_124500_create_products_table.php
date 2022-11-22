@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->text('description_en');
             $table->text('description_ar')->nullable();
             $table->string('image');
+            $table->float('price', 10, 2);
+            $table->float('cost', 10, 2);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

@@ -26,7 +26,7 @@ class ClassesController extends Controller
     public function store(ClassesRequest $request)
     {
         if ($image = $request->file('image')) {
-            $file_name = $request->name_en . time() . "." . $image->getClientOriginalExtension();
+            $file_name = rand(1, 99) . time() . "." . $image->getClientOriginalExtension();
             $path = public_path('uploads/classes');
             $image->move($path, $file_name);
             $request->image = 'uploads/classes/' . $file_name;
@@ -42,6 +42,7 @@ class ClassesController extends Controller
                 'duration' => $request->duration,
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
+                'start_time' => $request->start_time,
                 'training_id' => $request->training_id,
                 'status' => $request->status,
                 'image' => $request->image
@@ -71,7 +72,7 @@ class ClassesController extends Controller
             // Delete old image
             if(File::exists($class->image))
                 unlink($class->image);
-            $file_name = $request->name_en . time() . "." . $image->getClientOriginalExtension();
+            $file_name = rand(1, 99) . time() . "." . $image->getClientOriginalExtension();
             $path = public_path('uploads/classes');
             $image->move($path, $file_name);
             $request->image = 'uploads/classes/' . $file_name;
@@ -92,6 +93,7 @@ class ClassesController extends Controller
             'duration' => $request->duration,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
+            'start_time' => $request->start_time,
         ]);
 
         return redirect()->route('admin.classes.index')->with([

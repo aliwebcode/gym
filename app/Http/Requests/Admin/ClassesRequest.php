@@ -38,6 +38,7 @@ class ClassesRequest extends FormRequest
                     'duration' => 'required|numeric',
                     'start_date' => 'required|max:255',
                     'end_date' => 'required|max:255',
+                    'start_time' => 'required|max:255',
                     'training_id' => 'required'
                 ];
             }
@@ -56,6 +57,7 @@ class ClassesRequest extends FormRequest
                     'duration' => 'required|numeric',
                     'start_date' => 'required|max:255',
                     'end_date' => 'required|max:255',
+                    'start_time' => 'required|max:255',
                     'training_id' => 'required',
                 ];
             }

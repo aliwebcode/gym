@@ -16,7 +16,7 @@ class ClassController extends Controller
     {
         $classes = GymClass::active()
             ->when(\request()->date != '', function ($query) {
-                $query->where('start_date', '<', \request()->date)
+                $query->where('start_date', '<=', \request()->date)
                     ->where('end_date', '>', \request()->date);
             })
             ->when(\request()->training_id != '', function ($query) {

@@ -22,11 +22,11 @@ class CreateGymClassesTable extends Migration
             $table->text('description_ar')->nullable();
             $table->string('image');
             $table->float('price', 10, 2)->default(0.00);
-            $table->tinyInteger('duration')->default(60);
+            $table->integer('duration')->default(60);
             $table->date('start_date')->default('1900-01-01');
             $table->date('end_date')->default('1900-01-01');
             $table->time('start_time')->default('00:00:00');
-            $table->tinyInteger('capacity')->default(15);
+            $table->integer('capacity')->default(15);
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
