@@ -1,7 +1,4 @@
 @extends('admin.layouts.app')
-@push('style')
-    <link rel="stylesheet" href="{{ asset('assets/admin/libs/summernote/summernote-bs4.min.css') }}">
-@endpush
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -41,11 +38,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="description_en">Description (EN)</label>
-                                <textarea class="form-control summernote" name="description_en" id="description_en" cols="30" rows="10">{{ old('description_en') }}</textarea>
+                                <textarea class="form-control" name="description_en" id="description_en" cols="30" rows="10">{{ old('description_en') }}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="description_ar">Description (AR)</label>
-                                <textarea class="form-control summernote" name="description_ar" id="description_ar" cols="30" rows="10">{{ old('description_ar') }}</textarea>
+                                <textarea class="form-control" name="description_ar" id="description_ar" cols="30" rows="10">{{ old('description_ar') }}</textarea>
                             </div>
                             <div class="row">
                                 <div class="col-12 col-md-6">
@@ -114,25 +111,3 @@
         </div>
     </div>
 @endsection
-
-@push('script')
-    <script src="{{ asset('assets/admin/libs/summernote/summernote-bs4.min.js') }}"></script>
-    <script>
-        $(function(){
-
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 200,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            })
-        });
-    </script>
-@endpush

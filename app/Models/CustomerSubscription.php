@@ -10,4 +10,9 @@ class CustomerSubscription extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function subscription()
+    {
+        return $this->belongsTo(Subscription::class,'subscrib_id');
+    }
 }

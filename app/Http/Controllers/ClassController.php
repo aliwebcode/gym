@@ -24,6 +24,17 @@ class ClassController extends Controller
             })
             ->latest()
             ->get();
+
+        if(\request()->date)
+        {
+            foreach ($classes as $class)
+            {
+                $class->subscribers = CustomerClass::where('class_id', $class->id)
+                    ->where('class_date',\request()->date)
+                    ->count();
+            }
+        }
+
         return response($classes, 200);
     }
 }

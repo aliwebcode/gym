@@ -10,4 +10,9 @@ class CustomerClass extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function gym_class()
+    {
+        return $this->belongsTo(GymClass::class,'class_id');
+    }
 }

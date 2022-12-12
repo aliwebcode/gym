@@ -28,18 +28,18 @@ class CartStoreRequest extends FormRequest
             'cart_date' => 'required',
             'amount' => 'required',
             'items' => 'required|array',
-            'items.*.purchase_type_id' => 'required',
-            'items.*.purchase_id' => 'required',
+            'items.*.item_type_id' => 'required',
+            'items.*.item_id' => 'required',
             'items.*.purchase_date' => 'required',
             'items.*.payment' => 'required',
 
             // Class
-            'items.*.class_id' => 'required_if:items.*.purchase_type_id,==,1',
-            'items.*.class_date' => 'required_if:items.*.purchase_type_id,==,1',
+//            'items.*.class_id' => 'required_if:items.*.purchase_type_id,==,1',
+//            'items.*.class_date' => 'required_if:items.*.purchase_type_id,==,1',
             // Subscription
-            'items.*.subscription_id' => 'required_if:items.*.purchase_type_id,==,2',
-            'items.*.start_date' => 'required_if:items.*.purchase_type_id,==,2',
-            'items.*.end_date' => 'required_if:items.*.purchase_type_id,==,2',
+//            'items.*.subscription_id' => 'required_if:items.*.purchase_type_id,==,2',
+//            'items.*.start_date' => 'required_if:items.*.purchase_type_id,==,2',
+//            'items.*.end_date' => 'required_if:items.*.purchase_type_id,==,2',
         ];
     }
 }

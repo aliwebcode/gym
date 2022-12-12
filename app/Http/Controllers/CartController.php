@@ -9,7 +9,9 @@ use App\Models\CustomerClass;
 use App\Models\CustomerSubscription;
 use App\Models\PaymentType;
 use App\Models\PurchaseType;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class CartController extends Controller
 {
@@ -29,6 +31,12 @@ class CartController extends Controller
     public function store(CartStoreRequest $request)
     {
 
+        $purchase_types = [
+            'class' => PurchaseType::where('name_en', 'Class')->first()->id,
+            'subscription' => PurchaseType::where('name_en', 'Subscription')->first()->id,
+            'product' => PurchaseType::where('name_en', 'Product')->first()->id
+        ];
+
         $cart = Cart::create([
             'user_id' => auth()->id(),
             'payment_type_id' => $request->payment_type_id,
@@ -36,36 +44,31 @@ class CartController extends Controller
             'amount' => $request->amount
         ]);
 
-        $purchase_types = [
-            'class' => PurchaseType::where('name_en', 'Class')->first()->id,
-            'subscription' => PurchaseType::where('name_en', 'Subscription')->first()->id,
-            'product' => PurchaseType::where('name_en', 'Product')->first()->id
-        ];
-
         foreach ($request->items as $item) {
 
             $cart_item = CartItem::create([
                 'cart_id' => $cart->id,
-                'purchase_id' => $item['purchase_id'],
-                'purchase_type_id' => $item['purchase_type_id'],
+                'item_id' => $item['item_id'],
+                'item_type_id' => $item['item_type_id'],
                 'purchase_date' => $item['purchase_date'],
                 'payment' => $item['payment']
             ]);
 
-            if($item['purchase_type_id'] == $purchase_types['class']) {
+            if($item['item_type_id'] == $purchase_types['class']) {
+                $user_id = auth()->id();
                 CustomerClass::create([
-                    'user_id' => auth()->id(),
-                    'class_id' => $item['purchase_id'],
+                    'user_id' => $user_id,
+                    'class_id' => $item['item_id'],
                     'cart_item_id' => $cart_item->id,
                     'class_date' => $item['purchase_date'],
-                    'has_subscription' => 0
+                    'has_subscription' => $request->has_subscription
                 ]);
-            } else if($item['purchase_type_id'] == $purchase_types['subscription']) {
+            } else if($item['item_type_id'] == $purchase_types['subscription']) {
                 CustomerSubscription::create([
                     'user_id' => auth()->id(),
-                    'subscrib_id' => $item['subscription_id'],
-                    'start_date' => $item['start_date'],
-                    'end_date' => $item['end_date'],
+                    'subscrib_id' => $item['item_id'],
+                    'start_date' => $item['purchase_date'],
+                    'end_date' => Carbon::now()->addDays(Subscription::find($item['item_id'])->duration),
                     'status_id' => 1
                 ]);
             }
