@@ -39,4 +39,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     // Get User Orders
     Route::get('/orders', [OrderController::class, 'index']);
 
+
+    /* ================= Profile ================= */
+    Route::post('update', [AuthController::class, 'update']);
+
 });

@@ -12,61 +12,53 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">
-                            Classes
-                            <a href="{{ route('admin.classes.create') }}" class="btn btn-success btn-xs" style="margin-left: 5px">New</a>
-{{--                            <a href="{{ route('admin.classes.new_customer') }}" class="btn btn-info btn-xs" style="margin-left: 5px">New Class Customer</a>--}}
+                            Users
                         </h4>
 
                         <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                             <thead>
                             <tr>
                                 <th>Image</th>
-                                <th>Name (AR)</th>
-                                <th>Name (EN)</th>
-                                <th>Price</th>
-                                <th>Coach</th>
-                                <th>Branch</th>
-                                <th>Capacity</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
                                 <th>Status</th>
                                 <th>Creation Date</th>
                                 <th>Options</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($classes as $class)
+                            @forelse($users as $user)
                                 <tr>
                                     <td>
-                                        <img src="{{ '/' . $class->image }}" width="80" height="80">
+                                        @if($user->image)
+                                            <img src="{{ '/' . $user->image }}" width="80" height="80">
+                                        @else
+                                            <img src="{{ asset('assets/admin/images/user.png') }}" width="80" height="80">
+                                        @endif
                                     </td>
-                                    <td>{{ $class->name_ar }}</td>
-                                    <td>{{ $class->name_en }}</td>
-                                    <td>{{ $class->price }}$</td>
-                                    <td>{{ $class->coach->full_name }}</td>
-                                    <td>{{ $class->branch->name }}</td>
-                                    <td>{{ $class->capacity }}</td>
-                                    <td>{!! $class->statusWithLabel() !!}</td>
-                                    <td>{{ $class->created_at->format("Y-m-d") }}</td>
+                                    <td>{{ $user->full_name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone }}</td>
+                                    <td>{!! $user->statusWithLabel() !!}</td>
+                                    <td>{{ $user->created_at->format("Y-m-d") }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('admin.classes.edit', $class->id) }}" class="btn btn-primary btn-sm">
+                                            <a href="{{ route('admin.users.show', $user->id) }}" class="btn btn-dark btn-sm">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a href="javascript:void(0);" onclick="if (confirm('Are you sure to delete this record?')) { document.getElementById('delete-form-{{ $class->id }}').submit(); } else { return false; }" class="btn btn-danger btn-sm">
-                                                <i class="fa fa-trash-alt"></i>
+                                            <a href="javascript:void(0);" class="btn btn-danger btn-sm" title="Block">
+                                                <i class="fa fa-ban"></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('admin.classes.destroy', $class->id) }}"
-                                              method="post"
-                                              id="delete-form-{{ $class->id }}"
-                                              class="d-none">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-center" colspan="8">No classes added.</td>
+                                    <td class="text-center" colspan="6">No users added.</td>
                                 </tr>
                             @endforelse
                             </tbody>

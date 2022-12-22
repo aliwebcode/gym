@@ -37,4 +37,27 @@ class GymClass extends Model
         return $this->belongsTo(Training::class)->active();
     }
 
+    public function coach()
+    {
+        return $this->belongsTo(User::class, 'coach_id');
+    }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class, 'branch_id');
+    }
+
+    public function allowed()
+    {
+        return $this->hasMany(AllowedClass::class, 'class_id');
+    }
+
+    public function isAllowed()
+    {
+        if($this->allowed->count() > 0)
+            return true;
+        else
+            return false;
+    }
+
 }

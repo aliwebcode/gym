@@ -54,9 +54,8 @@
                             <div class="form-group">
                                 <label for="is_active">Status</label>
                                 <select name="status" id="is_active" class="form-control">
-                                    <option value="" disabled selected>Choose</option>
-                                    <option value="1" {{ old('status') == "1" ? "selected" : "" }}>Active</option>
-                                    <option value="0" {{ old('status') == "0" ? "selected" : "" }}>Inactive</option>
+                                    <option value="1" selected>Active</option>
+                                    <option value="0">Inactive</option>
                                 </select>
                             </div>
                             <div class="form-group">

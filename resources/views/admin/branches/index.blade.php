@@ -8,56 +8,39 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">
-                            Classes
-                            <a href="{{ route('admin.classes.create') }}" class="btn btn-success btn-xs" style="margin-left: 5px">New</a>
-{{--                            <a href="{{ route('admin.classes.new_customer') }}" class="btn btn-info btn-xs" style="margin-left: 5px">New Class Customer</a>--}}
-                        </h4>
+                        <h4 class="mt-0 header-title">Branches</h4>
 
                         <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                             <thead>
                             <tr>
-                                <th>Image</th>
-                                <th>Name (AR)</th>
-                                <th>Name (EN)</th>
-                                <th>Price</th>
-                                <th>Coach</th>
-                                <th>Branch</th>
-                                <th>Capacity</th>
-                                <th>Status</th>
+                                <th>Name</th>
                                 <th>Creation Date</th>
                                 <th>Options</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($classes as $class)
+                            @forelse($branches as $branch)
                                 <tr>
-                                    <td>
-                                        <img src="{{ '/' . $class->image }}" width="80" height="80">
-                                    </td>
-                                    <td>{{ $class->name_ar }}</td>
-                                    <td>{{ $class->name_en }}</td>
-                                    <td>{{ $class->price }}$</td>
-                                    <td>{{ $class->coach->full_name }}</td>
-                                    <td>{{ $class->branch->name }}</td>
-                                    <td>{{ $class->capacity }}</td>
-                                    <td>{!! $class->statusWithLabel() !!}</td>
-                                    <td>{{ $class->created_at->format("Y-m-d") }}</td>
+                                    <td>{{ $branch->name }}</td>
+                                    <td>{{ $branch->created_at->format("Y-m-d") }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('admin.classes.edit', $class->id) }}" class="btn btn-primary btn-sm">
+                                            <a href="{{ route('admin.branches.edit', $branch->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
-                                            <a href="javascript:void(0);" onclick="if (confirm('Are you sure to delete this record?')) { document.getElementById('delete-form-{{ $class->id }}').submit(); } else { return false; }" class="btn btn-danger btn-sm">
+                                            <a href="javascript:void(0);"
+                                               data-bs-toggle="modal"
+                                               data-bs-target="#deleteModal"
+                                               class="btn btn-danger btn-sm">
                                                 <i class="fa fa-trash-alt"></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('admin.classes.destroy', $class->id) }}"
+                                        <form action="{{ route('admin.branches.destroy', $branch->id) }}"
                                               method="post"
-                                              id="delete-form-{{ $class->id }}"
+                                              id="delete-form"
                                               class="d-none">
                                             @csrf
                                             @method('DELETE')
@@ -66,12 +49,48 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-center" colspan="8">No classes added.</td>
+                                    <td class="text-center" colspan="4">No Branches added.</td>
                                 </tr>
                             @endforelse
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="mt-0 header-title">Add New</h4>
+                        <form action="{{ route('admin.branches.store') }}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" name="name" id="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Add" class="btn btn-success">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="standard-modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="standard-modalLabel">Delete Branch</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Are you sure to delete branch?</h4>
+                    <p id="modal-warning-message"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="delete-btn" class="btn btn-danger" onclick="document.getElementById('delete-form').submit()">Delete</button>
                 </div>
             </div>
         </div>
@@ -97,4 +116,19 @@
 
     <!-- Datatables init -->
     <script src="{{ asset('assets/admin/js/pages/datatables.init.js') }}"></script>
+@endpush
+
+@push('script')
+    <script>
+        let deleteItem = function (c) {
+            if(c > 0) {
+                $('#modal-warning-message').text('The category has ' + c + ' subscriptions will be delete');
+                $('#modal-warning-message').attr('class', 'alert alert-danger');
+            } else {
+                $('#modal-warning-message').text('');
+                $('#modal-warning-message').attr('class', '');
+            }
+            $('#delete-btn').attr('onclick', 'document.getElementById("delete-form").submit()');
+        }
+    </script>
 @endpush

@@ -1,4 +1,11 @@
 @extends('admin.layouts.app')
+@push('style')
+    <link href="{{ asset('assets/admin/libs/mohithg-switchery/switchery.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/libs/multiselect/css/multi-select.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css" />
+@endpush
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -61,6 +68,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="classes">Allowed Classes</label>
+                                <select multiple="multiple" class="multi-select" id="classes" name="allowed_classes[]" data-plugin="multiselect">
+                                    @foreach($classes as $cl)
+                                        <option value="{{ $cl->id }}">{{ $cl->name_en }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 @if($subscription_categories->count() > 0)
                                     <input type="submit" class="btn btn-success" value="Add">
                                 @else
@@ -77,3 +92,15 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script src="{{ asset('assets/admin/libs/selectize/js/standalone/selectize.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/mohithg-switchery/switchery.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/multiselect/js/jquery.multi-select.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/jquery-mockjax/jquery.mockjax.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/devbridge-autocomplete/jquery.autocomplete.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/pages/form-advanced.init.js') }}"></script>
+@endpush

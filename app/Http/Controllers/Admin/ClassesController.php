@@ -4,8 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ClassesRequest;
+use App\Models\AllowedClass;
+use App\Models\Branch;
+use App\Models\Cart;
 use App\Models\GymClass;
+use App\Models\Subscription;
 use App\Models\Training;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -20,7 +25,12 @@ class ClassesController extends Controller
     public function create()
     {
         $trainings = Training::get(['id', 'name_en']);
-        return view('admin.classes.create', compact('trainings'));
+        $subscriptions = Subscription::get(['name_en', 'id']);
+        $trainers = User::whereHas('role', function ($q) {
+            $q->where('name', 'Coach');
+        })->get();
+        $branches = Branch::latest()->get();
+        return view('admin.classes.create', compact('trainings', 'subscriptions', 'trainers', 'branches'));
     }
 
     public function store(ClassesRequest $request)
@@ -32,7 +42,7 @@ class ClassesController extends Controller
             $request->image = 'uploads/classes/' . $file_name;
 
             // Save Data
-            GymClass::create([
+            $gym_class = GymClass::create([
                 'name_en' => $request->name_en,
                 'name_ar' => $request->name_ar,
                 'description_en' => $request->description_en,
@@ -44,9 +54,21 @@ class ClassesController extends Controller
                 'end_date' => $request->end_date,
                 'start_time' => $request->start_time,
                 'training_id' => $request->training_id,
+                'coach_id' => $request->coach_id,
+                'branch_id' => $request->branch_id,
                 'status' => $request->status,
                 'image' => $request->image
             ]);
+
+            if($request->allowed_classes && count($request->allowed_classes) > 0)
+            {
+                foreach ($request->allowed_classes as $cl) {
+                    AllowedClass::create([
+                        'subscrib_id' => $cl,
+                        'class_id' => $gym_class->id
+                    ]);
+                }
+            }
         }
         return redirect()->route('admin.classes.index')->with([
             'message' => 'Created successfully',
@@ -63,7 +85,11 @@ class ClassesController extends Controller
     {
         $cls = GymClass::findOrFail($id);
         $trainings = Training::get(['id', 'name_en']);
-        return view('admin.classes.edit', compact('cls', 'trainings'));
+        $trainers = User::whereHas('role', function ($q) {
+            $q->where('name', 'Coach');
+        })->get();
+        $branches = Branch::latest()->get();
+        return view('admin.classes.edit', compact('cls', 'trainings', 'trainers', 'branches'));
     }
 
     public function update(ClassesRequest $request, GymClass $class)
@@ -94,6 +120,8 @@ class ClassesController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'start_time' => $request->start_time,
+            'coach_id' => $request->coach_id,
+            'branch_id' => $request->branch_id
         ]);
 
         return redirect()->route('admin.classes.index')->with([
@@ -112,6 +140,27 @@ class ClassesController extends Controller
         return redirect()->back()->with([
             'message' => 'Deleted successfully',
             'alert-type' => 'success'
+        ]);
+    }
+
+    public function new_customer()
+    {
+        $users = User::whereHas('role', function ($q) {
+            $q->where('name', 'User');
+        })->get();
+        return view('admin.classes.new_customer', compact('users'));
+    }
+
+    public function new_customer_store(Request $request)
+    {
+        $payment_type = '';
+        $purchase_type = '';
+
+        $cart = Cart::create([
+            'user_id' => $request->user_id,
+            'payment_type_id' => $request->payment_type_id,
+            'cart_date' => $request->cart_date,
+            'amount' => $request->amount
         ]);
     }
 }

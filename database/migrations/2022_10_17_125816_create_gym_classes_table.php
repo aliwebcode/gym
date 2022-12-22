@@ -16,6 +16,7 @@ class CreateGymClassesTable extends Migration
         Schema::create('gym_classes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('training_id')->constrained()->cascadeOnDelete();
+            $table->bigInteger('coach_id');
             $table->string('name_en');
             $table->string('name_ar');
             $table->text('description_en');

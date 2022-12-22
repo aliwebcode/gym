@@ -8,6 +8,9 @@ use App\Http\Controllers\Admin\ClassesController;
 use App\Http\Controllers\Admin\SubscriptionCategoryController;
 use App\Http\Controllers\Admin\SubscriptionController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BranchController;
+use App\Http\Controllers\Admin\SettingController;
 
 
 Route::get('/', function () {
@@ -34,6 +37,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 
     /* ================= Classes ================= */
     Route::resource('classes', ClassesController::class);
+    Route::get('/new-customer-class', [ClassesController::class, 'new_customer'])->name('classes.new_customer');
+    Route::post('/new-customer-class', [ClassesController::class, 'new_customer_store'])->name('classes.new_customer_store');
 
     /* ================= Subscription Categories ================= */
     Route::resource('subscription_categories', SubscriptionCategoryController::class);
@@ -44,6 +49,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     /* ================= Products ================= */
     Route::resource('products', ProductController::class);
 
+    /* ================= Users ================= */
+    Route::resource('users', UserController::class);
+
+    /* ================= Branches ================= */
+    Route::resource('branches', BranchController::class);
+
+    /* ================= Settings ================= */
+    Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
+
     /* ================= Admin Profile ================= */
+    Route::get('profile', [AdminController::class, 'profile'])->name('profile');
+    Route::put('profile/{id}', [AdminController::class, 'update_profile'])->name('profile.update');
+
+    /* ================= Logout ================= */
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

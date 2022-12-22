@@ -15,4 +15,17 @@ class Subscription extends Model
     {
         return $this->belongsTo(SubscriptionCategory::class, 'subscription_category_id', 'id');
     }
+
+    public function allowed()
+    {
+        return $this->hasMany(AllowedClass::class, 'subscrib_id', 'id');
+    }
+
+    public function isAllowed()
+    {
+        if($this->allowed->count() > 0)
+            return true;
+        else
+            return false;
+    }
 }

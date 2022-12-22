@@ -48,7 +48,7 @@ class SubscriptionRequest extends FormRequest
                     'duration' => 'required|numeric',
                     'price' => 'required|numeric',
                     'subscription_category_id' => 'required|numeric',
-                    'image' => 'nullable|mimes:jpg,jpeg,png,gif|max:3000',
+                    'image' => 'nullable|mimes:jpg,jpeg,png,gif|max:3000'
                 ];
             }
             default: break;

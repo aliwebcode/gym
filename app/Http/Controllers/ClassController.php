@@ -14,16 +14,32 @@ class ClassController extends Controller
 {
     public function index()
     {
-        $classes = GymClass::active()
-            ->when(\request()->date != '', function ($query) {
-                $query->where('start_date', '<=', \request()->date)
-                    ->where('end_date', '>', \request()->date);
-            })
-            ->when(\request()->training_id != '', function ($query) {
-                $query->where('training_id', \request()->training_id);
-            })
-            ->latest()
-            ->get();
+
+        $user = auth()->user();
+        $role = $user->role->name;
+
+        if($role == 'Coach') {
+            $classes = GymClass::active()->where('coach_id', $user->id)
+                ->when(\request()->date != '', function ($query) {
+                    $query->where('start_date', '<=', \request()->date)
+                        ->where('end_date', '>', \request()->date);
+                })
+                ->when(\request()->training_id != '', function ($query) {
+                    $query->where('training_id', \request()->training_id);
+                })
+                ->latest()->get();
+        } else {
+            $classes = GymClass::with('branch', 'coach')->active()
+                ->when(\request()->date != '', function ($query) {
+                    $query->where('start_date', '<=', \request()->date)
+                        ->where('end_date', '>', \request()->date);
+                })
+                ->when(\request()->training_id != '', function ($query) {
+                    $query->where('training_id', \request()->training_id);
+                })
+                ->latest()
+                ->get();
+        }
 
         if(\request()->date)
         {

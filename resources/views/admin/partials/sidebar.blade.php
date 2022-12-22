@@ -31,24 +31,67 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('admin.subscription_categories.index') }}">
-                        <i class="mdi mdi-layers-outline"></i>
-                        <span> Subscription Categories </span>
+                    <a href="#subscriptions" data-bs-toggle="collapse">
+                        <i class="mdi mdi-cog"></i>
+                        <span> Subscriptions </span>
+                        <span class="menu-arrow"></span>
                     </a>
+                    <div class="collapse" id="subscriptions">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ route('admin.subscription_categories.index') }}">Subscription Categories</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.subscriptions.index') }}">Subscriptions</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
-                <li>
-                    <a href="{{ route('admin.subscriptions.index') }}">
-                        <i class="mdi mdi-book"></i>
-                        <span> Subscriptions </span>
-                    </a>
-                </li>
+{{--                <li>--}}
+{{--                    <a href="{{ route('admin.subscription_categories.index') }}">--}}
+{{--                        <i class="mdi mdi-layers-outline"></i>--}}
+{{--                        <span> Subscription Categories </span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
+
+{{--                <li>--}}
+{{--                    <a href="{{ route('admin.subscriptions.index') }}">--}}
+{{--                        <i class="mdi mdi-book"></i>--}}
+{{--                        <span> Subscriptions </span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
 
                 <li>
                     <a href="{{ route('admin.products.index') }}">
                         <i class="mdi mdi-gift"></i>
                         <span> Products </span>
                     </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.users.index') }}">
+                        <i class="mdi mdi-account-supervisor"></i>
+                        <span> Users </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#settings" data-bs-toggle="collapse">
+                        <i class="mdi mdi-cog"></i>
+                        <span> Settings </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <div class="collapse" id="settings">
+                        <ul class="nav-second-level">
+                            <li>
+                                <a href="#">General Settings</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.branches.index') }}">Branches</a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
             </ul>

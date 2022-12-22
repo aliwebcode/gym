@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SubscriptionRequest;
+use App\Models\AllowedClass;
+use App\Models\GymClass;
 use App\Models\Subscription;
 use App\Models\SubscriptionCategory;
 use Illuminate\Http\Request;
@@ -21,7 +23,8 @@ class SubscriptionController extends Controller
     public function create()
     {
         $subscription_categories = SubscriptionCategory::get(['id', 'name_en']);
-        return view('admin.subscriptions.create', compact('subscription_categories'));
+        $classes = GymClass::get(['name_en', 'id']);
+        return view('admin.subscriptions.create', compact('subscription_categories', 'classes'));
     }
 
     public function store(SubscriptionRequest $request)
@@ -33,7 +36,7 @@ class SubscriptionController extends Controller
             $request->image = 'uploads/subscriptions/' . $file_name;
 
             // Save Data
-            Subscription::create([
+            $subscription = Subscription::create([
                 'name_en' => $request->name_en,
                 'name_ar' => $request->name_ar,
                 'description_en' => $request->description_en,
@@ -43,6 +46,17 @@ class SubscriptionController extends Controller
                 'subscription_category_id' => $request->subscription_category_id,
                 'image' => $request->image
             ]);
+
+            if($request->allowed_classes && count($request->allowed_classes) > 0)
+            {
+                foreach ($request->allowed_classes as $cl) {
+                    AllowedClass::create([
+                        'subscrib_id' => $subscription->id,
+                        'class_id' => $cl
+                    ]);
+                }
+            }
+
         }
         return redirect()->route('admin.subscriptions.index')->with([
             'message' => 'Created successfully',
@@ -87,6 +101,18 @@ class SubscriptionController extends Controller
             'price' => $request->price,
             'subscription_category_id' => $request->subscription_category_id,
         ]);
+
+//        if($request->allowed_classes && count($request->allowed_classes) > 0)
+//        {
+//            AllowedClass::where('subscrib_id', $subscription->id)->delete();
+//
+//            foreach ($request->allowed_classes as $cl) {
+//                AllowedClass::create([
+//                    'subscrib_id' => $subscription->id,
+//                    'class_id' => $cl
+//                ]);
+//            }
+//        }
 
         return redirect()->route('admin.subscriptions.index')->with([
             'message' => 'Updated successfully',

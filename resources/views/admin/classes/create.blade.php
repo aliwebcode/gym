@@ -1,4 +1,11 @@
 @extends('admin.layouts.app')
+@push('style')
+    <link href="{{ asset('assets/admin/libs/mohithg-switchery/switchery.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/libs/multiselect/css/multi-select.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/libs/selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/admin/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet" type="text/css" />
+@endpush
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -19,6 +26,28 @@
                                         @foreach($trainings as $training)
                                             <option value="{{ $training->id }}" {{ (old('training_id') == $training->id ? "selected" : "") }}>
                                                 {{ $training->name_en }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="coach">Coach</label>
+                                    <select name="coach_id" id="coach" class="form-control">
+                                        <option value="" disabled selected>Choose</option>
+                                        @foreach($trainers as $trainer)
+                                            <option value="{{ $trainer->id }}" {{ (old('coach_id') == $trainer->id ? "selected" : "") }}>
+                                                {{ $trainer->full_name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="branches">Branches</label>
+                                    <select name="branch_id" id="branches" class="form-control">
+                                        <option value="" disabled selected>Choose</option>
+                                        @foreach($branches as $branch)
+                                            <option value="{{ $branch->id }}" {{ (old('branch_id') == $branch->id ? "selected" : "") }}>
+                                                {{ $branch->name }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -87,11 +116,18 @@
                                 <input type="file" name="image" id="image">
                             </div>
                             <div class="form-group">
+                                <label for="classes">Subscriptions</label>
+                                <select multiple="multiple" class="multi-select" id="classes" name="allowed_classes[]" data-plugin="multiselect">
+                                    @foreach($subscriptions as $cl)
+                                        <option value="{{ $cl->id }}">{{ $cl->name_en }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label for="is_active">Status</label>
                                 <select name="status" id="is_active" class="form-control">
-                                    <option value="" disabled selected>Choose</option>
-                                    <option value="1" {{ old('status') == "1" ? "selected" : "" }}>Active</option>
-                                    <option value="0" {{ old('status') == "0" ? "selected" : "" }}>Inactive</option>
+                                    <option value="1" selected>Active</option>
+                                    <option value="0">Inactive</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -111,3 +147,15 @@
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script src="{{ asset('assets/admin/libs/selectize/js/standalone/selectize.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/mohithg-switchery/switchery.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/multiselect/js/jquery.multi-select.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/jquery-mockjax/jquery.mockjax.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/devbridge-autocomplete/jquery.autocomplete.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/pages/form-advanced.init.js') }}"></script>
+@endpush
