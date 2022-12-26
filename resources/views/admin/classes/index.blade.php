@@ -25,7 +25,6 @@
                                 <th>Name (EN)</th>
                                 <th>Price</th>
                                 <th>Coach</th>
-                                <th>Branch</th>
                                 <th>Capacity</th>
                                 <th>Status</th>
                                 <th>Creation Date</th>
