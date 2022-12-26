@@ -3,30 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d7a8ace3-160a-4160-9c47-45276cd1bc99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BranchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BranchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClassesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClassesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TrainingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TrainingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/ClassesRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/ClassesRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/TrainingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/TrainingRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Branch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Training.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Training.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_10_17_123511_create_cart_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_10_17_123511_create_cart_items_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_10_17_123853_create_trainings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_10_17_123853_create_trainings_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_12_143743_create_user_subscription_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_12_143743_create_user_subscription_view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_12_150839_create_user_product_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_12_150839_create_user_product_view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_12_150850_create_user_class_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_12_150850_create_user_class_view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_22_113834_create_branches_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_22_113834_create_branches_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/branches/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/branches/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/branches/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/branches/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/classes/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/classes/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/classes/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/classes/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/trainings/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/trainings/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/trainings/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/trainings/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/trainings/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/trainings/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +192,7 @@
       <workItem from="1671623554254" duration="12883000" />
       <workItem from="1671706257802" duration="12018000" />
       <workItem from="1671962677042" duration="4288000" />
-      <workItem from="1672058139251" duration="5662000" />
+      <workItem from="1672058139251" duration="8170000" />
     </task>
     <servers />
   </component>

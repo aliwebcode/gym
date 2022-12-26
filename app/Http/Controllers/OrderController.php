@@ -15,7 +15,6 @@ class OrderController extends Controller
 {
     public function index()
     {
-
         if(\request()->type && \request()->type == 'class')
         {
             return response([
