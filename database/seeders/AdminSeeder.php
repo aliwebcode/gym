@@ -22,7 +22,7 @@ class AdminSeeder extends Seeder
             'password' => bcrypt('123123123'),
         ]);
         User::create([
-            'role_id' => 1,
+            'role_id' => 3,
             'email' => 'coach@coach.com',
             'phone' => '0999999933',
             'full_name' => 'Coach',

@@ -42,7 +42,6 @@
                                     <td>{{ $class->name_en }}</td>
                                     <td>{{ $class->price }}$</td>
                                     <td>{{ $class->coach->full_name }}</td>
-                                    <td>{{ $class->branch->name }}</td>
                                     <td>{{ $class->capacity }}</td>
                                     <td>{!! $class->statusWithLabel() !!}</td>
                                     <td>{{ $class->created_at->format("Y-m-d") }}</td>
