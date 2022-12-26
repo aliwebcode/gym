@@ -16,11 +16,22 @@
                 <div class="card">
                     <div class="card-body" style="text-align: left">
                         <h4>Edit User ({{ $user->full_name }})</h4>
-                        <form action="{{ route('admin.users.update', $user->id) }}" method="post">
+                        <form action="{{ route('admin.users.update', $user->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             @method('PUT')
+
+                            <input type="hidden" name="old_image" value="{{ $user->image }}">
                             <div class="row">
+                                <div class="col-12">
+                                    <label for="role_id">Role</label>
+                                    <select name="role_id" id="role_id" class="form-control">
+                                        <option value="" disabled selected>Choose</option>
+                                        @foreach($types as $type)
+                                            <option value="{{ $type->id }}" {{ ($user->role_id == $type->id ? "selected" : "") }}>{{ $type->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="col-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="full_name">Full Name</label>
@@ -43,6 +54,12 @@
                                     <div class="form-group">
                                         <label for="birthday">Birthday</label>
                                         <input type="date" class="form-control" name="birthday" id="birthday" value="{{ $user->birthday }}">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="image">Image</label>
+                                        <input type="file" name="image" id="image" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6">

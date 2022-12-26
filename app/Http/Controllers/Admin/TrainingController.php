@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TrainingRequest;
+use App\Models\Branch;
 use App\Models\Training;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -18,7 +19,8 @@ class TrainingController extends Controller
 
     public function create()
     {
-        return view('admin.trainings.create');
+        $branches = Branch::latest()->get();
+        return view('admin.trainings.create', compact('branches'));
     }
 
     public function store(TrainingRequest $request)
@@ -36,7 +38,8 @@ class TrainingController extends Controller
                 'description_en' => $request->description_en,
                 'description_ar' => $request->description_ar,
                 'status' => $request->status,
-                'image' => $request->image
+                'image' => $request->image,
+                'branch_id' => $request->branch_id
             ]);
         }
         return redirect()->route('admin.trainings.index')->with([
@@ -53,7 +56,8 @@ class TrainingController extends Controller
     public function edit($id)
     {
         $training = Training::findOrFail($id);
-        return view('admin.trainings.edit', compact('training'));
+        $branches = Branch::latest()->get();
+        return view('admin.trainings.edit', compact('training', 'branches'));
     }
 
     public function update(TrainingRequest $request, Training $training)
@@ -79,6 +83,7 @@ class TrainingController extends Controller
             'description_en' => $request->description_en,
             'description_ar' => $request->description_ar,
             'status' => $request->status,
+            'branch_id' => $request->branch_id
         ]);
 
         return redirect()->route('admin.trainings.index')->with([

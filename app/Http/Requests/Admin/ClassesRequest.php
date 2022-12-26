@@ -40,8 +40,7 @@ class ClassesRequest extends FormRequest
                     'end_date' => 'required|max:255',
                     'start_time' => 'required|max:255',
                     'training_id' => 'required',
-                    'coach_id' => 'required',
-                    'branch_id' => 'required'
+                    'coach_id' => 'required'
                 ];
             }
             case 'PUT':
@@ -61,8 +60,7 @@ class ClassesRequest extends FormRequest
                     'end_date' => 'required|max:255',
                     'start_time' => 'required|max:255',
                     'training_id' => 'required',
-                    'coach_id' => 'required',
-                    'branch_id' => 'required'
+                    'coach_id' => 'required'
                 ];
             }
             default: break;

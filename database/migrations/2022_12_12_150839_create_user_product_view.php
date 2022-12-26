@@ -14,7 +14,7 @@ class CreateUserProductView extends Migration
     public function up()
     {
         \DB::statement("
-        create view products_of_user_view
+        create or replace view products_of_user_view
         as
         select c.user_id as user_id,
                p.name_en,

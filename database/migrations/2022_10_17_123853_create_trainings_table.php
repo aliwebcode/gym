@@ -20,6 +20,7 @@ class CreateTrainingsTable extends Migration
             $table->text('description_en');
             $table->text('description_ar')->nullable();
             $table->string('image');
+            $table->bigInteger('branch_id');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

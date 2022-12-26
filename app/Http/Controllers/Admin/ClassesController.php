@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ClassesRequest;
 use App\Models\AllowedClass;
-use App\Models\Branch;
 use App\Models\Cart;
 use App\Models\GymClass;
 use App\Models\Subscription;
@@ -29,8 +28,7 @@ class ClassesController extends Controller
         $trainers = User::whereHas('role', function ($q) {
             $q->where('name', 'Coach');
         })->get();
-        $branches = Branch::latest()->get();
-        return view('admin.classes.create', compact('trainings', 'subscriptions', 'trainers', 'branches'));
+        return view('admin.classes.create', compact('trainings', 'subscriptions', 'trainers'));
     }
 
     public function store(ClassesRequest $request)
@@ -55,7 +53,6 @@ class ClassesController extends Controller
                 'start_time' => $request->start_time,
                 'training_id' => $request->training_id,
                 'coach_id' => $request->coach_id,
-                'branch_id' => $request->branch_id,
                 'status' => $request->status,
                 'image' => $request->image
             ]);
@@ -88,8 +85,7 @@ class ClassesController extends Controller
         $trainers = User::whereHas('role', function ($q) {
             $q->where('name', 'Coach');
         })->get();
-        $branches = Branch::latest()->get();
-        return view('admin.classes.edit', compact('cls', 'trainings', 'trainers', 'branches'));
+        return view('admin.classes.edit', compact('cls', 'trainings', 'trainers'));
     }
 
     public function update(ClassesRequest $request, GymClass $class)
@@ -120,8 +116,7 @@ class ClassesController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'start_time' => $request->start_time,
-            'coach_id' => $request->coach_id,
-            'branch_id' => $request->branch_id
+            'coach_id' => $request->coach_id
         ]);
 
         return redirect()->route('admin.classes.index')->with([

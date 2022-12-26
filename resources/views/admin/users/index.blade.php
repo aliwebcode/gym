@@ -13,6 +13,7 @@
                     <div class="card-body">
                         <h4 class="mt-0 header-title">
                             Users
+                            <a href="{{ route('admin.users.create') }}" class="btn btn-success btn-xs" style="margin-left: 5px">New</a>
                         </h4>
 
                         <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
@@ -22,6 +23,7 @@
                                 <th>Full Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
+                                <th>Role</th>
                                 <th>Status</th>
                                 <th>Creation Date</th>
                                 <th>Options</th>
@@ -32,7 +34,7 @@
                                 <tr>
                                     <td>
                                         @if($user->image)
-                                            <img src="{{ '/' . $user->image }}" width="80" height="80">
+                                            <img src="{{ $user->image }}" width="80" height="80">
                                         @else
                                             <img src="{{ asset('assets/admin/images/user.png') }}" width="80" height="80">
                                         @endif
@@ -40,6 +42,7 @@
                                     <td>{{ $user->full_name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->phone }}</td>
+                                    <td>{{ $user->role->name }}</td>
                                     <td>{!! $user->statusWithLabel() !!}</td>
                                     <td>{{ $user->created_at->format("Y-m-d") }}</td>
                                     <td>

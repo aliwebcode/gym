@@ -23,10 +23,12 @@ class BranchController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name_en' => 'required',
+            'name_ar' => 'required'
         ]);
         Branch::create([
-            'name' => $request->name
+            'name_en' => $request->name_en,
+            'name_ar' => $request->name_ar
         ]);
         return redirect()->back()->with([
             'message' => 'Created successfully',
@@ -48,9 +50,13 @@ class BranchController extends Controller
     public function update(Request $request, Branch $branch)
     {
         $request->validate([
-            'name' => 'required'
+            'name_en' => 'required',
+            'name_ar' => 'required'
         ]);
-        $branch->update(['name' => $request->name]);
+        $branch->update([
+            'name_en' => $request->name_en,
+            'name_ar' => $request->name_ar
+        ]);
         return redirect()->route('admin.branches.index')->with([
             'message' => 'Updated successfully',
             'alert-type' => 'success'

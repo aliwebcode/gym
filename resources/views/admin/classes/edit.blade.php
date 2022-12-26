@@ -39,17 +39,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="form-group">
-                                    <label for="branches">Branches</label>
-                                    <select name="branch_id" id="branches" class="form-control">
-                                        <option value="" disabled selected>Choose</option>
-                                        @foreach($branches as $branch)
-                                            <option value="{{ $branch->id }}" {{ ($cls->branch_id == $branch->id ? "selected" : "") }}>
-                                                {{ $branch->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="name_en">Name (EN)</label>

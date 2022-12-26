@@ -14,7 +14,7 @@ class CreateUserClassView extends Migration
     public function up()
     {
         \DB::statement("
-        create view get_user_classes_view
+        create or replace view get_user_classes_view
         as
         SELECT
         cc.user_id ,cc.class_id ,cc.class_date , c.name_en , c.name_ar

@@ -22,6 +22,7 @@
                                 <th>Image</th>
                                 <th>Name (AR)</th>
                                 <th>Name (EN)</th>
+                                <th>Branch</th>
                                 <th>Status</th>
                                 <th>Creation Date</th>
                                 <th>Options</th>
@@ -35,6 +36,7 @@
                                     </td>
                                     <td>{{ $training->name_ar }}</td>
                                     <td>{{ $training->name_en }}</td>
+                                    <td>{{ $training->branch->name_en }}</td>
                                     <td>{!! $training->statusWithLabel() !!}</td>
                                     <td>{{ $training->created_at->format("Y-m-d") }}</td>
                                     <td>

@@ -3,31 +3,30 @@
   <component name="ChangeListManager">
     <list default="true" id="d7a8ace3-160a-4160-9c47-45276cd1bc99" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BranchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BranchController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClassesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClassesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SubscriptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClassController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClassController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TrainingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TrainingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/OrderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/ClassesRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/ClassesRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/SubscriptionRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/SubscriptionRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Api/LoginRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Api/LoginRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/GymClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/GymClass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Subscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_10_17_125816_create_gym_classes_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_10_17_125816_create_gym_classes_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/AdminSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/AdminSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/RoleSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/RoleSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Admin/TrainingRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Admin/TrainingRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Branch.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Branch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Training.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Training.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_10_17_123511_create_cart_items_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_10_17_123511_create_cart_items_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_10_17_123853_create_trainings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_10_17_123853_create_trainings_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_12_143743_create_user_subscription_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_12_143743_create_user_subscription_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_12_150839_create_user_product_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_12_150839_create_user_product_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_12_150850_create_user_class_view.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_12_150850_create_user_class_view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_12_22_113834_create_branches_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_12_22_113834_create_branches_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/branches/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/branches/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/branches/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/branches/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/classes/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/classes/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/classes/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/classes/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/classes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/classes/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/partials/topbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partials/topbar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/subscriptions/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/subscriptions/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/subscriptions/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/subscriptions/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/trainings/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/trainings/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/trainings/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/trainings/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/trainings/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/trainings/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/users/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +213,9 @@
       <workItem from="1671450654826" duration="8418000" />
       <workItem from="1671572588249" duration="978000" />
       <workItem from="1671623554254" duration="12883000" />
-      <workItem from="1671706257802" duration="11802000" />
+      <workItem from="1671706257802" duration="12018000" />
+      <workItem from="1671962677042" duration="4288000" />
+      <workItem from="1672058139251" duration="5662000" />
     </task>
     <servers />
   </component>
@@ -222,18 +223,18 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1671718586572">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1672062933475">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1671718586572" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1672062933475" />
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1670525009169">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1670525009169" />
-    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1671717988982">
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1672061204916">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1671717988982" />
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1672061204916" />
     <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1671183615613">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

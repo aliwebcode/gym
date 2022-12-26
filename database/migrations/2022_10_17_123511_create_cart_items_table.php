@@ -19,7 +19,7 @@ class CreateCartItemsTable extends Migration
             $table->dateTime('purchase_date')->default('1900-01-01 00:00:00');
             $table->foreignId('item_type_id')->default(0);
             $table->foreignId('item_id')->default(0);
-            $table->float('payment', 3, 2)->default(0.00);
+            $table->float('payment', 5, 2)->default(0.00);
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class CreateUserSubscriptionView extends Migration
     public function up()
     {
         \DB::statement("
-        create view get_user_subscriptions_view
+        create or replace view get_user_subscriptions_view
         as
         select
         cs.user_id ,cs.`subscrib_id` , cs.`status_id`,cs.`start_date`,cs.`end_date`, s.name_en , s.name_ar

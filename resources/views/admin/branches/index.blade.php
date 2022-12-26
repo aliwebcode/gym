@@ -16,7 +16,8 @@
                         <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                             <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Name (EN)</th>
+                                <th>Name (AR)</th>
                                 <th>Creation Date</th>
                                 <th>Options</th>
                             </tr>
@@ -24,7 +25,8 @@
                             <tbody>
                             @forelse($branches as $branch)
                                 <tr>
-                                    <td>{{ $branch->name }}</td>
+                                    <td>{{ $branch->name_en }}</td>
+                                    <td>{{ $branch->name_ar }}</td>
                                     <td>{{ $branch->created_at->format("Y-m-d") }}</td>
                                     <td>
                                         <div class="btn-group">
@@ -64,8 +66,12 @@
                         <form action="{{ route('admin.branches.store') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control">
+                                <label for="name_en">Name (EN)</label>
+                                <input type="text" name="name_en" id="name_en" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="name_ar">Name (AR)</label>
+                                <input type="text" name="name_ar" id="name_ar" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-success">

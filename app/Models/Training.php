@@ -34,4 +34,9 @@ class Training extends Model
     {
         return $this->hasMany(GymClass::class);
     }
+
+    public function branch()
+    {
+        return $this->belongsTo(Branch::class);
+    }
 }

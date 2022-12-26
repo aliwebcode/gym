@@ -19,19 +19,19 @@ class OrderController extends Controller
         if(\request()->type && \request()->type == 'class')
         {
             return response([
-                ViewUserClass::select("*")->get()
+                ViewUserClass::where('user_id', auth()->id())->get()
             ], 200);
         }
         if(\request()->type && \request()->type == 'subscription')
         {
             return response([
-                ViewUserSubscription::select("*")->get()
+                ViewUserSubscription::where('user_id', auth()->id())->get()
             ], 200);
         }
         if(\request()->type && \request()->type == 'product')
         {
             return response([
-                ViewUserProduct::select("*")->get()
+                ViewUserProduct::where('user_id', auth()->id())->get()
             ], 200);
         }
     }

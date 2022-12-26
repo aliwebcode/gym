@@ -12,6 +12,19 @@
                         <form action="{{ route('admin.trainings.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="branches">Branches</label>
+                                        <select name="branch_id" id="branches" class="form-control">
+                                            <option value="" disabled selected>Choose</option>
+                                            @foreach($branches as $branch)
+                                                <option value="{{ $branch->id }}" {{ (old('branch_id') == $branch->id ? "selected" : "") }}>
+                                                    {{ $branch->name_en }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-12 col-md-6">
                                     <div class="form-group">
                                         <label for="name_en">Name (EN)</label>

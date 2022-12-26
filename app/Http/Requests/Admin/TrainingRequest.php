@@ -33,6 +33,7 @@ class TrainingRequest extends FormRequest
                     'description_ar' => 'nullable',
                     'status' => 'required',
                     'image' => 'required|mimes:jpg,jpeg,png,gif|max:3000',
+                    'branch_id' => 'required'
                 ];
             }
             case 'PUT':
@@ -44,7 +45,8 @@ class TrainingRequest extends FormRequest
                     'description_en' => 'nullable',
                     'description_ar' => 'nullable',
                     'status' => 'required',
-                    'image' => 'nullable|mimes:jpg,jpeg,png,gif|max:3000'
+                    'image' => 'nullable|mimes:jpg,jpeg,png,gif|max:3000',
+                    'branch_id' => 'required'
                 ];
             }
             default: break;
