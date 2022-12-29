@@ -90,6 +90,9 @@
                             <li>
                                 <a href="{{ route('admin.branches.index') }}">Branches</a>
                             </li>
+                            <li>
+                                <a href="{{ route('admin.holidays.index') }}">Holidays</a>
+                            </li>
                         </ul>
                     </div>
                 </li>
