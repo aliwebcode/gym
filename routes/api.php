@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BranchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/products', [ProductController::class, 'index']);
     // Get Trainings
     Route::get('/trainings', [TrainingController::class, 'index']);
+    // Get Branches
+    Route::get('/branches', [BranchController::class, 'index']);
 
 
     // Save Cart Items

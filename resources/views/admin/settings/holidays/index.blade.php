@@ -11,37 +11,32 @@
             <div class="col-12 col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mt-0 header-title">Branches</h4>
+                        <h4 class="mt-0 header-title">Holidays</h4>
 
                         <table id="datatable" class="table table-bordered dt-responsive table-responsive nowrap">
                             <thead>
                             <tr>
-                                <th>Name (EN)</th>
-                                <th>Name (AR)</th>
+                                <th>Date</th>
                                 <th>Creation Date</th>
                                 <th>Options</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($branches as $branch)
+                            @forelse($holidays as $holiday)
                                 <tr>
-                                    <td>{{ $branch->name_en }}</td>
-                                    <td>{{ $branch->name_ar }}</td>
-                                    <td>{{ $branch->created_at->format("Y-m-d") }}</td>
+                                    <td>{{ $holiday->day }}</td>
+                                    <td>{{ $holiday->created_at->format("Y-m-d") }}</td>
                                     <td>
                                         <div class="btn-group">
-                                            <a href="{{ route('admin.branches.edit', $branch->id) }}" class="btn btn-primary btn-sm">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
                                             <a href="javascript:void(0);"
-                                               onclick="document.getElementById('delete-form-{{ $branch->id }}').submit()"
+                                               onclick="document.getElementById('delete-form-{{ $holiday->id }}').submit()"
                                                class="btn btn-danger btn-sm">
                                                 <i class="fa fa-trash-alt"></i>
                                             </a>
                                         </div>
-                                        <form action="{{ route('admin.branches.destroy', $branch->id) }}"
+                                        <form action="{{ route('admin.holidays.destroy', $holiday->id) }}"
                                               method="post"
-                                              id="delete-form-{{ $branch->id }}"
+                                              id="delete-form-{{ $holiday->id }}"
                                               class="d-none">
                                             @csrf
                                             @method('DELETE')
@@ -50,7 +45,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td class="text-center" colspan="4">No Branches added.</td>
+                                    <td class="text-center" colspan="4">No holidays added.</td>
                                 </tr>
                             @endforelse
                             </tbody>
@@ -62,15 +57,15 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="mt-0 header-title">Add New</h4>
-                        <form action="{{ route('admin.branches.store') }}" method="post">
+                        <form action="{{ route('admin.holidays.store') }}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="name_en">Name (EN)</label>
-                                <input type="text" name="name_en" id="name_en" class="form-control">
+                                <label for="from">From (Day)</label>
+                                <input type="date" name="from" id="from" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="name_ar">Name (AR)</label>
-                                <input type="text" name="name_ar" id="name_ar" class="form-control">
+                                <label for="to">To (Day)</label>
+                                <input type="date" name="to" id="to" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Add" class="btn btn-success">
@@ -86,16 +81,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="standard-modalLabel">Delete Branch</h4>
+                    <h4 class="modal-title" id="standard-modalLabel">Delete Subscription Category</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h4>Are you sure to delete branch?</h4>
+                    <h4>Are you sure to delete subscription category?</h4>
                     <p id="modal-warning-message"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="delete-btn" class="btn btn-danger" onclick="document.getElementById('delete-form').submit()">Delete</button>
+                    <button type="button" id="delete-btn" class="btn btn-danger">Delete</button>
                 </div>
             </div>
         </div>

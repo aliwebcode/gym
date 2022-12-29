@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Branch;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\CustomerClass;
@@ -29,13 +30,16 @@ class ClassController extends Controller
                 })
                 ->latest()->get();
         } else {
-            $classes = GymClass::with('branch', 'coach')->active()
+            $classes = GymClass::with('coach')->active()
                 ->when(\request()->date != '', function ($query) {
                     $query->where('start_date', '<=', \request()->date)
                         ->where('end_date', '>', \request()->date);
                 })
                 ->when(\request()->training_id != '', function ($query) {
                     $query->where('training_id', \request()->training_id);
+                })
+                ->when(\request()->branch_id != '', function ($query) {
+                    $query->whereRelation('training', 'branch_id', \request()->branch_id);
                 })
                 ->latest()
                 ->get();
@@ -53,4 +57,5 @@ class ClassController extends Controller
 
         return response($classes, 200);
     }
+
 }

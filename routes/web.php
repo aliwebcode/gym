@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\BranchController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\HolidayController;
 
 
 Route::get('/', function () {
@@ -58,6 +59,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     /* ================= Settings ================= */
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('settings', [SettingController::class, 'update'])->name('settings.update');
+
+    /* ================= Holidays ================= */
+    Route::get('holidays', [HolidayController::class, 'index'])->name('holidays.index');
+    Route::post('holidays/store', [HolidayController::class, 'store'])->name('holidays.store');
+    Route::delete('holidays/{holiday}', [HolidayController::class, 'destroy'])->name('holidays.destroy');
 
     /* ================= Admin Profile ================= */
     Route::get('profile', [AdminController::class, 'profile'])->name('profile');

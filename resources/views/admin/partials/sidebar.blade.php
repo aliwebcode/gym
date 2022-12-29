@@ -85,7 +85,7 @@
                     <div class="collapse" id="settings">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="#">General Settings</a>
+                                <a href="{{ route('admin.settings.index') }}">General Settings</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.branches.index') }}">Branches</a>
