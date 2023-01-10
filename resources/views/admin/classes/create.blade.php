@@ -20,14 +20,20 @@
                             @csrf
                             <div class="row">
                                 <div class="form-group">
+                                    <label for="branch">Branch</label>
+                                    <select name="branch" id="branch" class="form-control">
+                                        <option value="" disabled selected>Choose</option>
+                                        @foreach($branches as $branch)
+                                            <option value="{{ $branch->id }}" {{ (old('branch') == $branch->id ? "selected" : "") }}>
+                                                {{ $branch->name_en }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="training">Training</label>
                                     <select name="training_id" id="training" class="form-control">
                                         <option value="" disabled selected>Choose</option>
-                                        @foreach($trainings as $training)
-                                            <option value="{{ $training->id }}" {{ (old('training_id') == $training->id ? "selected" : "") }}>
-                                                {{ $training->name_en }}
-                                            </option>
-                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -120,7 +126,7 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                @if($trainings->count() > 0)
+                                @if($trainingsCount > 0)
                                     <input type="submit" class="btn btn-success" value="Add">
                                 @else
                                     <div class="alert alert-info">
@@ -147,4 +153,30 @@
     <script src="{{ asset('assets/admin/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js') }}"></script>
     <script src="{{ asset('assets/admin/libs/bootstrap-maxlength/bootstrap-maxlength.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/pages/form-advanced.init.js') }}"></script>
+@endpush
+
+@push('script')
+    <script>
+
+        $('#branch').on('change', function () {
+
+            $('#training option[disabled != disabled]').remove();
+
+            let branch_id = $(this).val();
+
+            if(branch_id) {
+                let url = '/ajax/get-trainings/' + this.value;
+                fetch(url, { method: 'GET' })
+                    .then(Result => Result.json())
+                    .then(data => {
+                        for (let i = 0; i < data.length; i++)
+                        {
+                            $('#training').append(`<option value="${data[i].id}">${data[i].name_en}</option>`);
+                        }
+                    })
+                    .catch(errorMsg => { console.log(errorMsg); });
+            }
+
+        });
+    </script>
 @endpush

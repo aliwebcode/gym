@@ -73,7 +73,8 @@ class SubscriptionController extends Controller
     {
         $subscription = Subscription::findOrFail($id);
         $subscription_categories = SubscriptionCategory::get(['id', 'name_en']);
-        return view('admin.subscriptions.edit', compact('subscription', 'subscription_categories'));
+        $classes = GymClass::get(['name_en', 'id']);
+        return view('admin.subscriptions.edit', compact('subscription', 'subscription_categories', 'classes'));
     }
 
     public function update(SubscriptionRequest $request, Subscription $subscription)

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ClassesRequest;
 use App\Models\AllowedClass;
+use App\Models\Branch;
 use App\Models\Cart;
 use App\Models\GymClass;
 use App\Models\Subscription;
@@ -23,12 +24,13 @@ class ClassesController extends Controller
 
     public function create()
     {
-        $trainings = Training::get(['id', 'name_en']);
+        $branches = Branch::get(['name_en', 'id']);
+        $trainingsCount = Training::count();
         $subscriptions = Subscription::get(['name_en', 'id']);
         $trainers = User::whereHas('role', function ($q) {
             $q->where('name', 'Coach');
         })->get();
-        return view('admin.classes.create', compact('trainings', 'subscriptions', 'trainers'));
+        return view('admin.classes.create', compact('trainingsCount', 'subscriptions', 'trainers', 'branches'));
     }
 
     public function store(ClassesRequest $request)

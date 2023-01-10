@@ -4,14 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Api\LoginRequest;
 use App\Http\Requests\Api\RegisterRequest;
+use App\Http\Services\SMSGateway;
 use App\Models\Role;
 use App\Models\User;
+use App\Models\VerificationCode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class AuthController extends Controller
 {
+
+    public $sms;
+
+    public function __construct(SMSGateway $SMSGateway)
+    {
+        $this->sms = $SMSGateway;
+    }
+
     public function register(RegisterRequest $request)
     {
         if ($image = $request->file('image')) {
@@ -31,6 +41,8 @@ class AuthController extends Controller
             'role_id' => Role::where('name', 'User')->first()->id
         ]);
 
+        $this->sms->sendVerificationCode(['user_id' => $user->id]);
+
         return response([
             'user' => $user,
             'token' => $user->createToken('secret')->plainTextToken
@@ -43,8 +55,10 @@ class AuthController extends Controller
                 'message' => 'Invalid login.'
             ], 403);
         }
+
         return response([
             'user' => auth()->user(),
+            'verified' => VerificationCode::where('user_id',Auth::id())->first() ? 0: 1,
             'token' => auth()->user()->createToken('secret')->plainTextToken
         ], 200);
     }
@@ -77,5 +91,38 @@ class AuthController extends Controller
         return response([
             'message' => 'Profile Updated'
         ], 200);
+    }
+
+    public function check_otp(Request $request)
+    {
+        $check = $this->sms->checkOTPCode($request->code);
+
+        if(!$check) {
+            return response([
+                'message' => 'Incorrect Code'
+            ], 401);
+        } else {
+            $this->sms->removeOTPCode($request->code);
+            return response([
+                'message' => 'Account Verified'
+            ], 200);
+        }
+    }
+
+    public function forgot_password(Request $request)
+    {
+        $user_id = User::where('phone', $request->phone)->first()->id;
+        $this->sms->sendVerificationCode(['user_id' => $user_id]);
+        return response([
+            'message' => 'Code sent to phone number'
+        ], 200);
+    }
+
+    public function refresh_token()
+    {
+        auth()->user()->tokens()->delete();
+        return response()->json([
+            'token' => auth()->user()->createToken('secret')->plainTextToken
+        ]);
     }
 }

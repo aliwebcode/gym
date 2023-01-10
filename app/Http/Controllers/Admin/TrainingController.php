@@ -104,4 +104,10 @@ class TrainingController extends Controller
             'alert-type' => 'success'
         ]);
     }
+
+    public function get_trainings($branch_id)
+    {
+        $data = Training::where('branch_id', $branch_id)->get();
+        return response()->json($data);
+    }
 }

@@ -72,3 +72,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     /* ================= Logout ================= */
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+
+Route::group(['prefix' => 'ajax'], function () {
+    Route::get('/get-trainings/{branch_id}', [TrainingController::class, 'get_trainings']);
+});

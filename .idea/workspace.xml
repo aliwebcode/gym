@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d7a8ace3-160a-4160-9c47-45276cd1bc99" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/partials/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClassesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ClassesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SubscriptionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TrainingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TrainingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/classes/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/classes/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +202,16 @@
       <workItem from="1671962677042" duration="4288000" />
       <workItem from="1672058139251" duration="8170000" />
       <workItem from="1672151112342" duration="8442000" />
-      <workItem from="1672310067638" duration="1366000" />
+      <workItem from="1672310067638" duration="2026000" />
+      <workItem from="1672926410601" duration="361000" />
+      <workItem from="1672944702821" duration="613000" />
+      <workItem from="1673046620403" duration="2468000" />
+      <workItem from="1673085259025" duration="5725000" />
+      <workItem from="1673113512542" duration="591000" />
+      <workItem from="1673132457392" duration="1270000" />
+      <workItem from="1673175015676" duration="3260000" />
+      <workItem from="1673285824573" duration="326000" />
+      <workItem from="1673307296138" duration="7465000" />
     </task>
     <servers />
   </component>
@@ -209,17 +227,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1670525009169" />
+    <state x="483" y="87" key="NewPhpClassDialog" timestamp="1673308014526">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="483" y="87" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1673308014526" />
     <state x="517" y="287" key="NewPhpFileDialog" timestamp="1672158088564">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1672158088564" />
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1671183615613">
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1673313693518">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1671183615613" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1669078525758">
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1673313693518" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1673308121720">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1669078525758" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1673308121720" />
   </component>
 </project>

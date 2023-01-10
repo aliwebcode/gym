@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/forgot-password', [AuthController::class, 'forgot_password']);
 
 // Get Payment Types
 Route::get('/get-payment-types', [CartController::class, 'get_payment_types']);
@@ -34,14 +35,17 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     // Get Branches
     Route::get('/branches', [BranchController::class, 'index']);
 
-
     // Save Cart Items
     Route::post('/cart/store', [CartController::class, 'store']);
-
 
     // Get User Orders
     Route::get('/orders', [OrderController::class, 'index']);
 
+    // Check OTP
+    Route::post('/check-otp', [AuthController::class, 'check_otp']);
+
+    // Refresh Token
+    Route::get('/refresh-token', [AuthController::class, 'refresh_token']);
 
     /* ================= Profile ================= */
     Route::post('update', [AuthController::class, 'update']);

@@ -91,6 +91,7 @@
 <!-- Dashboar init js-->
 <script src="{{ asset('assets/admin/js/pages/dashboard.init.js') }}"></script>
 
+
 <!-- App js-->
 <script src="{{ asset('assets/admin/js/app.min.js') }}"></script>
 @stack('script')

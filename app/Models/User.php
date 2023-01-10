@@ -56,4 +56,9 @@ class User extends Authenticatable
         return $this->hasOne(CustomerSubscription::class);
     }
 
+    public function codes()
+    {
+        return $this->hasMany(VerificationCode::class);
+    }
+
 }
