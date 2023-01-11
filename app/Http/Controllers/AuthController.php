@@ -44,9 +44,8 @@ class AuthController extends Controller
         $this->sms->sendVerificationCode(['user_id' => $user->id]);
 
         return response([
-            'user' => $user,
-            'token' => $user->createToken('secret')->plainTextToken
-        ], 200);
+            'user' => $user
+        ], 401);
     }
     public function login(LoginRequest $request)
     {
@@ -56,11 +55,19 @@ class AuthController extends Controller
             ], 403);
         }
 
-        return response([
-            'user' => auth()->user(),
-            'verified' => VerificationCode::where('user_id',Auth::id())->first() ? 0: 1,
-            'token' => auth()->user()->createToken('secret')->plainTextToken
-        ], 200);
+        $not_verified = VerificationCode::where('user_id',Auth::id())->first();
+
+        if($not_verified) {
+            return response([
+                'user' => auth()->user()
+            ], 401);
+        } else {
+            return response([
+                'user' => auth()->user(),
+                'token' => auth()->user()->createToken('secret')->plainTextToken
+            ], 200);
+        }
+
     }
     public function update(Request $request)
     {
@@ -104,7 +111,7 @@ class AuthController extends Controller
         } else {
             $this->sms->removeOTPCode($request->code);
             return response([
-                'message' => 'Account Verified'
+                'token' => auth()->user()->createToken('secret')->plainTextToken
             ], 200);
         }
     }
