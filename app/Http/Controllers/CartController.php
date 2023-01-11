@@ -50,7 +50,7 @@ class CartController extends Controller
                 if($current_orders == $class_capacity)
                 {
                     return response([
-                        'message' => 'Full Capacity in data ' . $item['purchase_date']
+                        'message' => 'Full Capacity in date ' . $item['purchase_date']
                     ], 401);
                 }
             }

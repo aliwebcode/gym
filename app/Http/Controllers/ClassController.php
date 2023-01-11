@@ -71,6 +71,21 @@ class ClassController extends Controller
             'class_id' => 'required',
             'class_date' => 'required'
         ]);
+
+
+        $class_capacity = GymClass::findOrFail($request->class_id)->capacity;
+        $current_orders = CustomerClass::where('class_id', $request->class_id)
+            ->where('class_date', $request->class_date)
+            ->count();
+
+        if($current_orders == $class_capacity)
+        {
+            return response([
+                'message' => 'Full Capacity in date ' . $request->class_date
+            ], 401);
+        }
+
+
         $customer_class = CustomerClass::where('user_id', auth()->id())
             ->where('class_id', $request->class_id)->first();
 
