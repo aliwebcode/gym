@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AllowedClass;
 use App\Models\Branch;
 use App\Models\Cart;
 use App\Models\CartItem;
@@ -47,8 +48,14 @@ class ClassController extends Controller
 
         if(\request()->date)
         {
+            $user_subscription_id = auth()->user()->subscription->subscription->id;
+
             foreach ($classes as $class)
             {
+                $allowed = AllowedClass::where('class_id', $class->id)->pluck('subscrib_id')->toArray();
+                if(in_array($user_subscription_id, $allowed))
+                    $class->price = 0;
+
                 $class->subscribers = CustomerClass::where('class_id', $class->id)
                     ->where('class_date',\request()->date)
                     ->count();
@@ -56,6 +63,28 @@ class ClassController extends Controller
         }
 
         return response($classes, 200);
+    }
+
+    public function change_class_date(Request $request)
+    {
+        $request->validate([
+            'class_id' => 'required',
+            'class_date' => 'required'
+        ]);
+        $customer_class = CustomerClass::where('user_id', auth()->id())
+            ->where('class_id', $request->class_id)->first();
+
+        $customer_class->update([
+            'cart_date' => $request->class_date
+        ]);
+
+        CartItem::findOrFail($customer_class->cart_item_id)->update([
+            'purchase_date' => $request->class_date
+        ]);
+
+        return response([
+            'message' => 'Success'
+        ], 200);
     }
 
 }

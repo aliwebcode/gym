@@ -47,6 +47,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     // Refresh Token
     Route::get('/refresh-token', [AuthController::class, 'refresh_token']);
 
+    // Change Class Date
+    Route::post('/change-class-date', [ClassController::class, 'change_class_date']);
+
     /* ================= Profile ================= */
     Route::post('update', [AuthController::class, 'update']);
 

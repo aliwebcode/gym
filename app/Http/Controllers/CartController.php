@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\CustomerClass;
 use App\Models\CustomerSubscription;
+use App\Models\GymClass;
 use App\Models\PaymentType;
 use App\Models\PurchaseType;
 use App\Models\Subscription;
@@ -36,6 +37,24 @@ class CartController extends Controller
             'subscription' => PurchaseType::where('name_en', 'Subscription')->first()->id,
             'product' => PurchaseType::where('name_en', 'Product')->first()->id
         ];
+
+        foreach ($request->items as $item)
+        {
+            if($item['item_type_id'] == $purchase_types['class'])
+            {
+                $class_capacity = GymClass::findOrFail($item['item_id'])->capacity;
+                $current_orders = CustomerClass::where('class_id', $item['item_id'])
+                    ->where('class_date', $item['purchase_date'])
+                    ->count();
+
+                if($current_orders == $class_capacity)
+                {
+                    return response([
+                        'message' => 'Full Capacity in data ' . $item['purchase_date']
+                    ], 401);
+                }
+            }
+        }
 
         $cart = Cart::create([
             'user_id' => auth()->id(),
